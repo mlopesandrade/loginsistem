@@ -43,8 +43,8 @@ mixin _$LoginStore on _LoginStoreBase, Store {
   final _$setLoginAsyncAction = AsyncAction('_LoginStoreBase.setLogin');
 
   @override
-  Future setLogin() {
-    return _$setLoginAsyncAction.run(() => super.setLogin());
+  Future setLogin(BuildContext context) {
+    return _$setLoginAsyncAction.run(() => super.setLogin(context));
   }
 
   final _$_LoginStoreBaseActionController =

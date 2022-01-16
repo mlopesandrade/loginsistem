@@ -31,14 +31,14 @@ abstract class _LoginStoreBase with Store {
   void setChangePasswordVisualized() => passwordVisualized = !passwordVisualized;
 
   @action
-  setLogin()async{
+  setLogin(BuildContext context)async{
     SystemChannels.textInput.invokeMethod('TextInput.hide');
     stateOnlyText = ButtonState.loading;
     var logado = false;
     if (formKey.currentState!.validate()){
       Timer(Duration(seconds: 3),()async{
         formKey.currentState!.save();
-        await authStore.getLogin(email.toString(), password.toString());
+        await authStore.getLogin(email.toString(), password.toString(),context);
         if(authStore.userLogged.email != null){
           logado = true;
         }

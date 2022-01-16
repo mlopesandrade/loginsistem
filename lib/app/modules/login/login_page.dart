@@ -116,7 +116,7 @@ class LoginPageState extends State<LoginPage> {
                               ButtonState.fail: Colors.redAccent,
                               ButtonState.success: Colors.green,
                             },
-                            onPressed: store.setLogin,
+                            onPressed: ()=>store.setLogin(context),
                             state: store.stateOnlyText,
                           ),
                         )

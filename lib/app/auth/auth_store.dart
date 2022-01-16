@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:testelogin/app/auth/auth_repository.dart';
 import 'package:testelogin/app/shared/models/user_model.dart';
@@ -16,8 +17,8 @@ abstract class _AuthStoreBase with Store {
   userLogged = await _authRepository.getUserLogged();
  }
 
- Future getLogin(String email,String password)async{
-  userLogged = await _authRepository.getLogin(email, password);
+ Future getLogin(String email,String password,BuildContext context)async{
+  userLogged = await _authRepository.getLogin(email, password, context);
  }
 
  Future signOut()async{

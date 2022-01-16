@@ -1,6 +1,11 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:testelogin/app/shared/models/user_model.dart';
+import 'package:testelogin/app/shared/widgets/custom_dialogs.dart';
 
 class AuthRepository {
 
@@ -25,7 +30,7 @@ class AuthRepository {
     await appdata.remove(bdData);
   }
 
-  Future<UserModel> getLogin(String? email,String? password)async{
+  Future<UserModel> getLogin(String? email,String? password,BuildContext context)async{
     try{
       if(email == 'teste@teste.com'){
         if(password == '12345678'){
@@ -36,11 +41,11 @@ class AuthRepository {
           saveUserLocale(user);
           return user;
         }else{
-          print('senha errada');
+          await CustomDialogs.dialogError(context, 'Senha Invalida');
           return UserModel();
         }
       }else{
-        print('email errada');
+        await CustomDialogs.dialogError(context, 'Email não cadastrado');
         return UserModel();
       }
     }catch(e){
