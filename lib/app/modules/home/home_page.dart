@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:testelogin/app/shared/utils/enums.dart';
@@ -52,7 +53,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                         Text('Data:'),
                         Container(
                           height: 60,
-                          width: 100,
+                          width: 120,
                           child: CustomTextFormField(
                             controller: store.date,
                             readOnly: true,
@@ -72,7 +73,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                 border: Border.all(color: Colors.grey.shade300),
                                 borderRadius: BorderRadius.circular(5)
                             ),
-                            height: 48,
+                            height: kIsWeb ? 48 : 58,
                             width: 200,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 5),
